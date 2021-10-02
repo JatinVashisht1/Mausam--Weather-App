@@ -91,6 +91,13 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
+    //charts
+//    implementation 'ma.hu:compose-charts:1.0.0'
+
+
+
+
+
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.3.0"
 }

@@ -1,6 +1,7 @@
 package com.example.mausamweatherapp.data.remote.dto.stateResponseDto
 
 
+import com.example.mausamweatherapp.domain.model.StateWeather
 import com.google.gson.annotations.SerializedName
 
 data class Main(
@@ -21,3 +22,14 @@ data class Main(
     @SerializedName("temp_min")
     val tempMin: Double = 0.0
 )
+
+fun Main.toStateWeather() : StateWeather{
+    return StateWeather(
+        feelsLike = feelsLike,
+        temp = temp,
+        pressure = pressure,
+        tempMax = tempMax,
+        tempMin = tempMin,
+        humidity = humidity
+    )
+}
