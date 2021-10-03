@@ -4,7 +4,7 @@ package com.example.mausamweatherapp.di
 
 import com.example.mausamweatherapp.common.Constants
 import com.example.mausamweatherapp.data.remote.WeatherApi
-import com.example.mausamweatherapp.data.repository.WeatherApiImpl
+import com.example.mausamweatherapp.data.repository.WeatherRepositoryImpl
 import com.example.mausamweatherapp.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
@@ -30,6 +30,8 @@ object AppModule {
     @Provides
     @Singleton
     fun providesRepository(api: WeatherApi) : WeatherRepository {
-        return WeatherApiImpl(api)
+        return WeatherRepositoryImpl(api)
     }
+
+
 }

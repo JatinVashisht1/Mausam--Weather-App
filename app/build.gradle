@@ -94,6 +94,8 @@ dependencies {
     //charts
 //    implementation 'ma.hu:compose-charts:1.0.0'
 
+    //Dexter
+    implementation 'com.karumi:dexter:6.2.3'
 
 
 

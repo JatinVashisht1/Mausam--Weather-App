@@ -1,10 +1,10 @@
-package com.example.mausamweatherapp.data.remote.dto.stateResponseDto
+package com.example.mausamweatherapp.data.remote.dto.response_by_lat_lon
 
 
 import com.example.mausamweatherapp.domain.model.WeatherRequired
 import com.google.gson.annotations.SerializedName
 
-data class ByStateResponseDto(
+data class LatLonResponseDto(
     @SerializedName("base")
     val base: String = "",
     @SerializedName("clouds")
@@ -32,7 +32,8 @@ data class ByStateResponseDto(
     @SerializedName("wind")
     val wind: Wind = Wind()
 )
-fun ByStateResponseDto.toWeatherRequired() : WeatherRequired{
+
+fun LatLonResponseDto.toWeatherRequired() : WeatherRequired{
     return WeatherRequired(
         feelsLike = main.feelsLike,
         temp = main.temp,
@@ -40,7 +41,7 @@ fun ByStateResponseDto.toWeatherRequired() : WeatherRequired{
         tempMax = main.tempMax,
         tempMin = main.tempMin,
         humidity = main.humidity,
-        weatherDesc = weather.first().main,
+        weatherDesc = weather.first().description,
         country = sys.country,
         state = name
     )

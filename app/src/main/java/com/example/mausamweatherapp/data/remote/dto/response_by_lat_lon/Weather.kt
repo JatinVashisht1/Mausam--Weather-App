@@ -1,4 +1,4 @@
-package com.example.mausamweatherapp.data.remote.dto.stateResponseDto
+package com.example.mausamweatherapp.data.remote.dto.response_by_lat_lon
 
 
 import com.google.gson.annotations.SerializedName
@@ -13,5 +13,3 @@ data class Weather(
     @SerializedName("main")
     val main: String = ""
 )
-
-fun Weather.toMain() : String = main
