@@ -1,4 +1,4 @@
-package com.example.mausamweatherapp.data.remote.dto.stateResponseDto
+package com.example.mausamweatherapp.data.remote.dto.state_response_dto
 
 
 import com.google.gson.annotations.SerializedName

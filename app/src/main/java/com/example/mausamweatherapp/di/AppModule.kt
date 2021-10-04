@@ -1,7 +1,5 @@
 package com.example.mausamweatherapp.di
 
-
-
 import com.example.mausamweatherapp.common.Constants
 import com.example.mausamweatherapp.data.remote.WeatherApi
 import com.example.mausamweatherapp.data.repository.WeatherRepositoryImpl
@@ -32,6 +30,4 @@ object AppModule {
     fun providesRepository(api: WeatherApi) : WeatherRepository {
         return WeatherRepositoryImpl(api)
     }
-
-
 }

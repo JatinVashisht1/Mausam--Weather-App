@@ -47,7 +47,7 @@ class StateViewModel @Inject constructor(
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
+            // Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -56,8 +56,6 @@ class StateViewModel @Inject constructor(
             // for ActivityCompat#requestPermissions for more details.
             return
         }
-
-
 
         val a = locationManager.getLastKnownLocation("gps")
         if (a != null) {

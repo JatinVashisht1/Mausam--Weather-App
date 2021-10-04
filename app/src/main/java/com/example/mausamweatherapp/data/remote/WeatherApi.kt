@@ -1,7 +1,7 @@
 package com.example.mausamweatherapp.data.remote
 
 import com.example.mausamweatherapp.data.remote.dto.response_by_lat_lon.LatLonResponseDto
-import com.example.mausamweatherapp.data.remote.dto.stateResponseDto.ByStateResponseDto
+import com.example.mausamweatherapp.data.remote.dto.state_response_dto.ByStateResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
