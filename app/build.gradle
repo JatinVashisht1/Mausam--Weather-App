@@ -92,11 +92,18 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
     //charts
-//    implementation 'ma.hu:compose-charts:1.0.0'
+    //implementation 'ma.hu:compose-charts:1.0.0'
 
     //Dexter
     implementation 'com.karumi:dexter:6.2.3'
 
+    //Icons
+//    implementation("br.com.devsrsouza.compose.icons.android:ICON_PACK:1.0.0")
+
+    //Swipe to refresh
+//    implementation "com.google.accompanist:accompanist-swiperefresh:1.0.0"
+//    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+//    implementation 'com.google.accompanist:accompanist-swiperefresh:1.0.0'
 
 
 

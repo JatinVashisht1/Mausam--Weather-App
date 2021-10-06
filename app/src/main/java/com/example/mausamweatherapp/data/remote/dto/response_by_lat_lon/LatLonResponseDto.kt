@@ -41,8 +41,11 @@ fun LatLonResponseDto.toWeatherRequired() : WeatherRequired{
         tempMax = main.tempMax,
         tempMin = main.tempMin,
         humidity = main.humidity,
-        weatherDesc = weather.first().description,
+        weatherDesc = weather.first().main,
         country = sys.country,
-        state = name
+        state = name,
+        windSpeed = wind.speed,
+        sunRise = sys.sunrise,
+        sunSet = sys.sunset,
     )
 }

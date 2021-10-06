@@ -4,10 +4,20 @@ import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.core.content.PermissionChecker.*
 import com.example.mausamweatherapp.presentation.state_test_screen.StateWeatherScreen
 import com.example.mausamweatherapp.presentation.ui.theme.MausamWeatherAppTheme
@@ -29,6 +39,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     val per = rememberSaveable { mutableStateOf<Boolean>(false) }
+                    val scrollState = rememberScrollState()
 
                     Dexter.withContext(this)
                         .withPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -60,10 +71,15 @@ class MainActivity : ComponentActivity() {
                             }
                         }).check()
 
-                    if(per.value){
-                        StateWeatherScreen(context = this)
-                    }
+                    val nestedScrollConnection: NestedScrollConnection
 
+                    if(per.value){
+
+                        Column() {
+                            StateWeatherScreen()
+                        }
+
+                    }
                 }
             }
         }

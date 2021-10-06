@@ -1,10 +1,10 @@
 package com.example.mausamweatherapp.domain.model
 
-data class DailyForecast (
+data class DailyForecast(
     val feelsLike: Float,
     val pressure: Int,
     val dateMilli: Int,
-    val humidity: Int,
+    val humidity: Float,
     val rain: Double,
     val weather: String
 )

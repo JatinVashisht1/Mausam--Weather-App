@@ -9,9 +9,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.mausamweatherapp.domain.model.StateWeather
 import com.example.mausamweatherapp.domain.model.WeatherRequired
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun DetailTemp(news: WeatherRequired?) {
@@ -22,26 +26,26 @@ fun DetailTemp(news: WeatherRequired?) {
             .wrapContentHeight()
     ) {
         Column(
-            modifier = Modifier.padding(4.dp)
+            modifier = Modifier.padding(6.dp)
         ) {
             if (news != null) {
-                Text(
-                    text = "Sky: " + news.weatherDesc,
-                    style = MaterialTheme.typography.h5
-                )
-                Text(text = "Feels Like: " + (news.feelsLike - 273.15)
-                    .toFloat()
-                    .toString(),
-                    style = MaterialTheme.typography.h5)
-                Text(text = "MaxTemp: " + (news.tempMax - 273.15).toFloat().toString(),
-                    style = MaterialTheme.typography.h5)
-                Text(text = "MinTemp: " + (news.tempMin - 273.15).toFloat().toString(),
-                    style = MaterialTheme.typography.h5)
-                Text(text = "Humidity: " + news.humidity.toString() + "%",
-                    style = MaterialTheme.typography.h5)
+                val formatter: DateFormat = SimpleDateFormat("hh:mm aa")
+                SimpleDateFormat()
+//                Text(text = "Humidity: " + news.humidity.toString() + "%",
+//                    style = MaterialTheme.typography.h6,
+//                    fontWeight = FontWeight.SemiBold)
                 Text(text = "Pressure: " + news.pressure.toString(),
-                    style = MaterialTheme.typography.h5)
-
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.SemiBold)
+                Text(text = "Wind speed: " + news.windSpeed.toString() + " metre/sec",
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.SemiBold)
+                Text(text = "Sunrise: " + formatter.format((news.sunRise).toLong()*1000),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.SemiBold)
+                Text(text = "Sunset: " + formatter.format((news.sunSet).toLong()*1000),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.SemiBold)
             }
         }
     }

@@ -42,6 +42,9 @@ fun ByStateResponseDto.toWeatherRequired() : WeatherRequired{
         humidity = main.humidity,
         weatherDesc = weather.first().main,
         country = sys.country,
-        state = name
+        state = name,
+        windSpeed = wind.speed,
+        sunRise = sys.sunrise,
+        sunSet = sys.sunset
     )
 }

@@ -1,9 +1,10 @@
-package com.example.mausamweatherapp.data.remote.dto.days_forecast_response_dto
+package com.example.mausamweatherapp.data.remote.dto.hourly_forecast_dto
 
 
+import com.example.mausamweatherapp.domain.model.HourlyForecast
 import com.google.gson.annotations.SerializedName
 
-data class Current(
+data class Hourly(
     @SerializedName("clouds")
     val clouds: Int = 0,
     @SerializedName("dew_point")
@@ -14,22 +15,30 @@ data class Current(
     val feelsLike: Double = 0.0,
     @SerializedName("humidity")
     val humidity: Int = 0,
+    @SerializedName("pop")
+    val pop: Double = 0.0,
     @SerializedName("pressure")
     val pressure: Int = 0,
-    @SerializedName("sunrise")
-    val sunrise: Int = 0,
-    @SerializedName("sunset")
-    val sunset: Int = 0,
     @SerializedName("temp")
     val temp: Double = 0.0,
     @SerializedName("uvi")
-    val uvi: Float = 0.0f,
+    val uvi: Double = 0.0,
     @SerializedName("visibility")
     val visibility: Int = 0,
     @SerializedName("weather")
-    val weather: List<Weather> = listOf(),
+    val weather: List<WeatherX> = listOf(),
     @SerializedName("wind_deg")
     val windDeg: Int = 0,
+    @SerializedName("wind_gust")
+    val windGust: Double = 0.0,
     @SerializedName("wind_speed")
     val windSpeed: Double = 0.0
 )
+
+fun Hourly.toHourlyForecast() : HourlyForecast{
+    return  HourlyForecast(
+        temp = temp.toFloat(),
+        sky = weather.first().main,
+        date = dt
+    )
+}

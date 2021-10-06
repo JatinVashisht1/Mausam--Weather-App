@@ -1,4 +1,4 @@
-package com.example.mausamweatherapp.data.remote.dto.days_forecast_response_dto
+package com.example.mausamweatherapp.data.remote.dto.hourly_forecast_dto
 
 
 import com.google.gson.annotations.SerializedName
@@ -23,13 +23,15 @@ data class Current(
     @SerializedName("temp")
     val temp: Double = 0.0,
     @SerializedName("uvi")
-    val uvi: Float = 0.0f,
+    val uvi: Double = 0.0,
     @SerializedName("visibility")
     val visibility: Int = 0,
     @SerializedName("weather")
     val weather: List<Weather> = listOf(),
     @SerializedName("wind_deg")
     val windDeg: Int = 0,
+    @SerializedName("wind_gust")
+    val windGust: Double = 0.0,
     @SerializedName("wind_speed")
     val windSpeed: Double = 0.0
 )

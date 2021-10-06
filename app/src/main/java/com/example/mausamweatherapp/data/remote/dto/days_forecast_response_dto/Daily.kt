@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Daily(
     @SerializedName("clouds")
-    val clouds: Int = 0,
+    val clouds: Float = 0.0f,
     @SerializedName("dew_point")
     val dewPoint: Double = 0.0,
     @SerializedName("dt")
@@ -14,7 +14,7 @@ data class Daily(
     @SerializedName("feels_like")
     val feelsLike: FeelsLike = FeelsLike(),
     @SerializedName("humidity")
-    val humidity: Int = 0,
+    val humidity: Float = 0.0f,
     @SerializedName("moon_phase")
     val moonPhase: Double = 0.0,
     @SerializedName("moonrise")
@@ -22,7 +22,7 @@ data class Daily(
     @SerializedName("moonset")
     val moonset: Int = 0,
     @SerializedName("pop")
-    val pop: Int = 0,
+    val pop: Float = 0.0f,
     @SerializedName("pressure")
     val pressure: Int = 0,
     @SerializedName("rain")
@@ -47,10 +47,10 @@ data class Daily(
 
 fun Daily.toDailyForecast() : DailyForecast{
     return DailyForecast(
-        feelsLike = ((feelsLike.day + feelsLike.morn + feelsLike.night + feelsLike.eve)/4.0).toFloat(),
+        feelsLike = ((feelsLike.day + feelsLike.eve + feelsLike.morn + feelsLike.night)/4f).toFloat(),
         pressure = pressure,
         dateMilli = dt,
-        humidity = humidity,
+        humidity = humidity.toFloat(),
         rain = rain,
         weather = weather.first().main
     )
