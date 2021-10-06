@@ -10,7 +10,6 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mausamweatherapp.common.Resource
-import com.example.mausamweatherapp.domain.use_cases.GetNewsByStateUseCase
 import com.example.mausamweatherapp.domain.use_cases.days_forecast_use_case.GetNewsByForecastUseCase
 import com.example.mausamweatherapp.domain.use_cases.hourly_forecast_use_case.GetHourlyForecastUseCase
 import com.example.mausamweatherapp.domain.use_cases.news_by_lan_use_case.GetNewsByLanLon
@@ -24,7 +23,6 @@ import javax.inject.Inject
 class StateViewModel @Inject constructor(
     @ApplicationContext
     context: Context,
-    private val getNewsByStateUseCase: GetNewsByStateUseCase,
     private val getNewsByLanLon: GetNewsByLanLon,
     private val getNewsByForecastUseCase: GetNewsByForecastUseCase,
     private val getHourlyForecastUseCase: GetHourlyForecastUseCase
@@ -115,20 +113,6 @@ class StateViewModel @Inject constructor(
 
 //    @RequiresApi(Build.VERSION_CODES.R)
 
-    fun getNews(state: String = "punjab,in"){
-        getNewsByStateUseCase(state = state).onEach {result->
-            when(result){
-                is Resource.Success ->{
-                    _state.value = StateScreenState(news = result.data)
-                }
-                is Resource.Loading ->{
-                    _state.value = StateScreenState(isLoading = true)
-                }
-                is Resource.Error ->{
-                    _state.value = StateScreenState(error = result.message!!)
-                }
-            }
-        }.launchIn(viewModelScope)
-    }
+
 
 }
