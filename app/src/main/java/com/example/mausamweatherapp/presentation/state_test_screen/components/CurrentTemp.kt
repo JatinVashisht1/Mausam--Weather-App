@@ -1,22 +1,23 @@
 package com.example.mausamweatherapp.presentation.state_test_screen.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Water
 import androidx.compose.material.icons.filled.WbCloudy
-import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.HorizontalAlignmentLine
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.mausamweatherapp.domain.model.WeatherRequired
+import com.example.mausamweatherapp.R
+
 
 //@ExperimentalTime
 @Composable
@@ -43,30 +44,30 @@ fun CurrentTemp(modifier: Modifier = Modifier, news: WeatherRequired?) {
                     )
                     when (news.weatherDesc) {
                         "Clear" -> {
-                            Icon(imageVector = Icons.Default.WbSunny,
+                            Image(painter = painterResource(R.drawable.sun),
                                 contentDescription = "Clear",
                                 modifier = Modifier
                                     .size((MaterialTheme.typography.h3.fontSize).value.dp)
                                     .padding(start = 8.dp),
-                                tint = Color.Yellow
+//                                tint = Color.Yellow
                             )
                         }
                         "Rain" -> {
-                            Icon(imageVector = Icons.Default.WbCloudy,
+                            Image(painter = painterResource(R.drawable.rain),
                                 contentDescription = "Rain",
                                 modifier = Modifier
                                     .size((MaterialTheme.typography.h3.fontSize).value.dp)
                                     .padding(start = 8.dp),
-                                tint = Color.DarkGray
+//                                tint = Color.DarkGray
                             )
                         }
                         "Cloudy" -> {
-                            Icon(imageVector = Icons.Default.WbCloudy,
+                            Image(painter = painterResource(R.drawable.cloudy_day),
                                 contentDescription = "Cloud",
                                 modifier = Modifier
                                     .size((MaterialTheme.typography.h3.fontSize).value.dp)
                                     .padding(start = 8.dp),
-                                tint = Color.LightGray
+//                                tint = Color.LightGray
                             )
                         }
                     }

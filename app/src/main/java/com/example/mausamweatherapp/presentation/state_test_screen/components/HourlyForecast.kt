@@ -1,29 +1,24 @@
 package com.example.mausamweatherapp.presentation.state_test_screen.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.WbCloudy
-import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.mausamweatherapp.R
 import com.example.mausamweatherapp.domain.model.HourlyForecast
 import com.example.mausamweatherapp.presentation.state_test_screen.HourlyForecastScreenState
-import com.example.mausamweatherapp.presentation.state_test_screen.StateViewModel
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.util.*
 
 @Composable
 fun HourlyForecast(
@@ -38,11 +33,16 @@ fun HourlyForecast(
     Card( modifier = Modifier
         .padding(14.dp)
         .fillMaxWidth()
-        .wrapContentHeight()) {
+        .wrapContentHeight()
+        .shadow(8.dp)
+    ) {
         Column {
             Text(text = "Hourly Forecast",
                 style = MaterialTheme.typography.h6,
-                modifier = Modifier.padding(8.dp))
+                modifier = Modifier
+                    .padding(8.dp)
+                    .padding(start = 11.dp)
+            )
             hourlyState.data?.let {
                 HourForecastList(hourlyState.data.hourlyForecastList)
             }
@@ -52,7 +52,7 @@ fun HourlyForecast(
 
 @Composable
 fun HourForecastList(data: List<HourlyForecast>) {
-    LazyRow {
+    LazyRow (modifier = Modifier.padding(start = 12.dp, end = 12.dp)){
         items(data){item->
             HourForecastListItem(item)
         }
@@ -86,30 +86,28 @@ fun HourForecastListItem(item: HourlyForecast) {
         }
         when (item.sky) {
             "Clear" -> {
-                Icon(imageVector = Icons.Default.WbSunny,
+                Image(
+                    painter = painterResource(id = R.drawable.sun),
                     contentDescription = "Clear",
                     modifier = Modifier
                         .size((MaterialTheme.typography.h6.fontSize).value.dp + MaterialTheme.typography.body2.fontSize.value.dp)
-                        .padding(start = 8.dp, end = 4.dp),
-                    tint = Color.Yellow
+                        .padding(end = 12.dp),
+//                    tint = Color(0xffEBB307)
                 )
             }
             "Rain" -> {
-                Icon(imageVector = Icons.Default.WbCloudy,
-                    contentDescription = "Rain",
+                Image(painter = painterResource(id = R.drawable.rain), contentDescription = "rain",
                     modifier = Modifier
                         .size((MaterialTheme.typography.h6.fontSize).value.dp + MaterialTheme.typography.body2.fontSize.value.dp)
-                        .padding(start = 8.dp, end = 4.dp),
-                    tint = Color.DarkGray
-                )
+                        .padding(end = 12.dp))
             }
             "Clouds" -> {
-                Icon(imageVector = Icons.Default.WbCloudy,
+                Image(painter = painterResource(id = R.drawable.cloudy_day),
                     contentDescription = "Cloud",
                     modifier = Modifier
                         .size((MaterialTheme.typography.h6.fontSize).value.dp + MaterialTheme.typography.body2.fontSize.value.dp)
-                        .padding(start = 8.dp, end = 4.dp),
-                    tint = Color.LightGray
+                        .padding(end = 12.dp),
+//                            tint = Color.LightGray
                 )
             }
         }

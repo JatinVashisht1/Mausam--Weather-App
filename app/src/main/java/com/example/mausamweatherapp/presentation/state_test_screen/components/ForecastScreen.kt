@@ -1,5 +1,7 @@
 package com.example.mausamweatherapp.presentation.state_test_screen.components
 
+import androidx.compose.animation.VectorConverter
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -11,9 +13,12 @@ import androidx.compose.material.icons.filled.WbCloudy
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.mausamweatherapp.R
 import com.example.mausamweatherapp.domain.model.DailyForecast
 import com.example.mausamweatherapp.presentation.state_test_screen.ForecastScreenState
 import java.text.DateFormat
@@ -34,12 +39,15 @@ fun ForecastScreen(state: ForecastScreenState) {
                 .padding(14.dp)
                 .fillMaxWidth()
                 .wrapContentHeight()
+                .shadow(8.dp)
         ) {
             Column {
                 Text(
                     text = "Days Forecast",
                     style = MaterialTheme.typography.h6,
-                    modifier = Modifier.padding(8.dp)
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .padding(start = 11.dp)
                 )
                 if (list != null) {
                     ForecastItems(weather = list)
@@ -51,7 +59,7 @@ fun ForecastScreen(state: ForecastScreenState) {
 
     @Composable
     fun ForecastItems(weather: List<DailyForecast>) {
-        LazyRow() {
+        LazyRow(modifier = Modifier.padding(start = 12.dp, end = 12.dp)) {
             items(weather) { item ->
                 ForecastItem(weather = item)
             }
@@ -88,30 +96,28 @@ fun ForecastScreen(state: ForecastScreenState) {
             }
                 when (weather.weather) {
                     "Clear" -> {
-                        Icon(imageVector = Icons.Default.WbSunny,
+                        Image(
+                            painter = painterResource(id = R.drawable.sun),
                             contentDescription = "Clear",
                             modifier = Modifier
                                 .size((MaterialTheme.typography.h6.fontSize).value.dp + MaterialTheme.typography.body2.fontSize.value.dp)
                                 .padding(end = 12.dp),
-                            tint = Color.Yellow
+//                    tint = Color(0xffEBB307)
                         )
                     }
                     "Rain" -> {
-                        Icon(imageVector = Icons.Default.WbCloudy,
-                            contentDescription = "Rain",
+                        Image(painter = painterResource(id = R.drawable.rain), contentDescription = "rain",
                             modifier = Modifier
                                 .size((MaterialTheme.typography.h6.fontSize).value.dp + MaterialTheme.typography.body2.fontSize.value.dp)
-                                .padding(end = 12.dp),
-                            tint = Color.DarkGray
-                        )
+                                .padding(end = 12.dp))
                     }
                     "Clouds" -> {
-                        Icon(imageVector = Icons.Default.WbCloudy,
+                        Image(painter = painterResource(id = R.drawable.cloudy_day),
                             contentDescription = "Cloud",
                             modifier = Modifier
                                 .size((MaterialTheme.typography.h6.fontSize).value.dp + MaterialTheme.typography.body2.fontSize.value.dp)
                                 .padding(end = 12.dp),
-                            tint = Color.LightGray
+//                            tint = Color.LightGray
                         )
                     }
                 }
