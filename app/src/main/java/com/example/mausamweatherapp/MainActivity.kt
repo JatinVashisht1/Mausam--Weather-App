@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollDispatcher
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.core.content.PermissionChecker.*
+import com.example.mausamweatherapp.presentation.state_test_screen.StateViewModel
 import com.example.mausamweatherapp.presentation.state_test_screen.StateWeatherScreen
 import com.example.mausamweatherapp.presentation.ui.theme.MausamWeatherAppTheme
 import com.karumi.dexter.Dexter
